@@ -1,6 +1,7 @@
 import speech_recognition as sr
 import webbrowser
 import pyttsx3
+import musicLibrary
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
@@ -18,6 +19,10 @@ def processCommand(c):
         webbrowser.open("https://youtube.com")
     elif "open instagram" in c.lower():
         webbrowser.open("https://instagram.com")
+    elif c.lower().startswith("play"):
+        song = c.lower().split(" ")[1]
+        link = musicLibrary.music[song]
+        webbrowser.open(link)
 
 if __name__ == "__main__":
     speak("Initializing Jarvis......")
